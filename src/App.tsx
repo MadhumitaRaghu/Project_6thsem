@@ -17,7 +17,7 @@ import Stag2 from './pages/Stag2';
 import Stag3 from './pages/Stag3';
 import Stag4 from './pages/Stag4';
 import Header1 from './components/Header';
-import Tab1 from './components/Tabs';
+import Tab from './components/Tabs';
 // Render the component
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
     <Sidebar></Sidebar>
     {/* <Post></Post> */}
     <div className='foot_mark'>
-    
+    <Tab></Tab>
     <Routes>
       <Route path='/overview' element={<Overview></Overview>}/>
       <Route path='/about' element={<About></About>}/>

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import "../styles/tab.css";
 import { Link, useLocation,useNavigate } from "react-router-dom";
 import { GrFormClose } from "react-icons/gr";
-const Tab1 = () => {
+const Tab = () => {
   const location =useLocation();
   const [p, setp] = useState([])
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function tabs(s1){
   }
   }, 900);
 
-}
+} 
 
 
 
@@ -73,6 +73,15 @@ function tabs(s1){
       
         localStorage.setItem("tabs",JSON.stringify(x))
         let y=JSON.parse(localStorage.getItem("tabs"))
+        if(y.length===0){
+          setTimeout(() => {
+          
+            setp(y)
+            navigate("/")
+  
+          }, 900);  
+        }
+        else{
         let w=y[y.length-1]
         setTimeout(() => {
           
@@ -80,6 +89,7 @@ function tabs(s1){
           navigate(w)
 
         }, 900);  
+      }
       }
   
 
@@ -181,4 +191,4 @@ function tabs(s1){
   );
 };
 
-export default Tab1;
+export default Tab;

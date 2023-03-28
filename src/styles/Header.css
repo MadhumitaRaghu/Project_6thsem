@@ -1,0 +1,139 @@
+/*.main {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    position: right;
+    
+}
+
+h1 {
+    margin: 10px;
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+}
+
+.search {
+    width: 300px;
+    position: relative;
+    float: right;
+    
+}
+
+ul li {
+    font-size: 20px;
+} 
+.head1{
+    column-gap: 20px;
+    display: flex;
+
+    height: 20px;
+    width: 20px;
+
+}
+.logo{
+    padding-left: 60px;
+    
+}
+
+.extra{
+   position: relative;
+}*/
+
+
+.header{
+    padding-left: 30px;
+    padding-top: 10px;
+    width:100%;
+    height:60px;
+    background-color:rgb(250, 250, 250);
+    border-bottom: 2px solid black;
+}
+/* body{
+    margin:0px;
+    padding:0px;
+} */
+.logo{
+    color:#000000;
+    font-size:25px;
+    font-family:verdana;
+    text-align:left;
+    margin-top:0px;
+    float:left;
+    margin:0px;
+    line-height:50px;
+    padding-left:9px;
+}
+.search{
+    float:right;line-height:52px;padding-right:60px;
+    display: flex;
+}
+.icon1{
+    padding-top: 0.5rem;
+    
+    
+}
+.top-react-icons{
+    font-size: 2rem;
+    color: green;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    right: 4rem;
+    top: 5.3rem;
+    overflow: auto; /* Enable scroll if needed */
+ border-radius: 3px;
+    max-height: 80vh;
+   
+  }
+
+  
+  /* Modal Content/Box */
+  .modal-content {
+   background-color: #fefefe;
+    /* margin: 15% auto; 15% from the top and centered */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* border: 1px solid #888; */
+    max-width: 20vw; 
+    
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .searchbar{
+    display: flex;
+    
+  }
+  .search_list{
+   
+     line-height: 2.1rem;
+  }
+  .side{
+    margin-right: 2rem  ;
+    color: #aaa;
+    width: 4rem;
+    display: block;
+  }
+
+
+  a{
+    text-decoration: none;
+    color: #000000;
+  }
+
+
+

@@ -1,0 +1,20 @@
+.pages {
+width: 100%;
+}
+html,
+body{
+   
+   width: 100vw;
+   height: 800px;
+   overflow: hidden;    
+   margin: 0;
+}
+.foot_mark{
+   height: 100vh;
+   width: 100%;
+  border-left: 4px solid #00469C;
+}
+.Appy{
+   background-color: rgba(246, 241, 241, 0.839);
+   justify-content: flex-end;
+}

@@ -9,7 +9,17 @@ import * as BiIcons from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { SidebarData } from './SidebarData'
 const Header1 = () => {
-
+  const [Install, setInstall] = useState<any>([])
+  let p:any=[];
+  {
+    SidebarData.map((item)=>{
+      if(item.title==="Install and Configure"){
+        p=item.subNav
+          
+      }
+  })
+  }
+  console.log(p)
   const closeModal=()=>{
     let modal = document.getElementById("myModal");
     
@@ -33,8 +43,8 @@ const Header1 = () => {
       let a = JSON.parse(localStorage.getItem('recents') || '{}');
       setrecentArr(a);
     }
-  
  
+   
   }, [])
   
   
@@ -82,6 +92,7 @@ const Header1 = () => {
   }
  
   return (
+  
     <div className="header">
       <h1 className="logo">
         <img src={logo} width="60px" height="30px"></img>HPE Cray EX Console
@@ -136,13 +147,16 @@ const Header1 = () => {
                 <div className="searchbar">
                 
                 <div className="sideContent">
-                <div className="side search_list">Install</div>
+                <div className="side search_list">Install and Configure</div>
                   <ul style={{"listStyle":"none"}}>
-                  
-                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
+                  {p.map((e:any)=>{
+                     return <li className="search_list" key={e}><Link to={e.path}>{e.title}</Link></li>
+                  })}
+                  {/* <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
                   <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
                   <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li> 
-                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li></ul>
+                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li> */}
+                  </ul>
                 </div>
               </div>
                 <hr></hr>

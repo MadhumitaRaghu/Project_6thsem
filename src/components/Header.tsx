@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react';
+import { useState, useEffect } from "react";
 // import * as TbIcons from "react-icons/tb"
 import TextField from "@mui/material/TextField";
 // import List from "./List";
@@ -7,92 +7,134 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logohp.png";
 import * as BiIcons from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { SidebarData } from './SidebarData'
+import { SidebarData } from "./SidebarData";
 const Header1 = () => {
-  const [Install, setInstall] = useState<any>([])
-  let p:any=[];
+  let p: any = [];
+  let q: any = [];
   {
-    SidebarData.map((item)=>{
-      if(item.title==="Install and Configure"){
-        p=item.subNav
-          
+    SidebarData.map((item) => {
+      if (item.title === "Install and Configure") {
+        p = item.subNav;
       }
-  })
+    });
   }
-  console.log(p)
-  const closeModal=()=>{
-    let modal = document.getElementById("myModal");
-    
-    if(modal!=null){
-      modal.style.display="none"
+  {
+    for (let i = 0; i < SidebarData.length; i++) {
+      let temp1 = { name: SidebarData[i].title, path: SidebarData[i].path };
+      q.push(temp1);
+      if (SidebarData[i].subNav !== null) {
+        let sub = SidebarData[i].subNav || [];
+        for (let j = 0; j < sub.length; j++) {
+          let temp2 = { name: sub[j].title, path: sub[j].path };
+          q.push(temp2);
+        }
+      }
     }
-  
   }
-  const showModal=()=>{
+  console.log(p);
+  const closeModal = () => {
     let modal = document.getElementById("myModal");
-  
-    if(modal!=null){
-      modal.style.display="block"
-    }
 
-  }
-  const [recentArr, setrecentArr] = useState<any>([])
-  const [overview, setoverview] = useState<any>([])
+    if (modal != null) {
+      modal.style.display = "none";
+    }
+  };
+  const showModal = () => {
+    let modal = document.getElementById("myModal");
+
+    if (modal != null) {
+      modal.style.display = "block";
+    }
+  };
+  const [recentArr, setrecentArr] = useState<any>([]);
+
   useEffect(() => {
-    if(localStorage.getItem("recents")!==null){
-      let a = JSON.parse(localStorage.getItem('recents') || '{}');
+    if (localStorage.getItem("recents") !== null) {
+      let a = JSON.parse(localStorage.getItem("recents") || "{}");
       setrecentArr(a);
     }
- 
-   
-  }, [])
-  
-  
-  
-  const filterSearch=(e:any)=>{
+
+    console.log(q);
+  }, []);
+
+  const addToRecent = (name: any, path: any) => {
+    console.log(name);
+    let y = [...recentArr];
+    
+      let temp = { name, path },
+        flag = false;
+      for (let i = 0; i < y.length; i++) {
+        if (y[i].name === temp.name && y[i].path === temp.path) {
+          flag = true;
+        }
+      }
+      if (!flag) {
+        y.push(temp);
+
+        localStorage.setItem("recents", JSON.stringify(y));
+        setrecentArr(y);
+      
+    }
+  };
+
+  const filterSearch = (e: any) => {
     let input = (document.getElementById("outlined-basic") as any).value;
-  
-    input=input.toLowerCase();
+
+    input = input.toLowerCase();
     // input=input.toLowerCase();
-    let y = (document.getElementsByClassName('searchbar') as any);
-    let x = (document.getElementsByClassName('search_list') as any);
+    let y = document.getElementsByClassName("searchbar") as any;
+    let x = document.getElementsByClassName("search_list") as any;
 
     // console.log(x[0].innerHTML)
     // y[0].style.display="none"
-    
-   console.log(x[1].innerHTML)
-    for (let i = 0; i < x.length; i++) { 
-      let z=Math.floor(i/4);
-      
+
+    for (let i = 0; i < x.length; i++) {
+      let z = Math.floor(i / 4);
+
       if (!x[i].innerHTML.toLowerCase().includes(input)) {
-        x[i].style.display="none";
-    
+        x[i].style.display = "none";
+
         // y[z].style.display="none"
+      } else {
+        x[i].style.display = "list-item";
+
+        y[z].style.display = "flex";
       }
-      else {
-        x[i].style.display="list-item";
-     
-          
-          y[z].style.display="flex"
-            
-                           
-      }
-  }
-  if(e.keyCode===13){
-    if(input!==null){
-      let x=[...recentArr];
-      x.push(input)
-      localStorage.setItem("recents",JSON.stringify(x))
-      setrecentArr(x)
-      
     }
+    if (e.keyCode === 13) {
 
-  }
+let y = [...recentArr];
+    
+      
+        let flag = false;
+      for (let i = 0; i < y.length; i++) {
+        if (y[i].name.toLowerCase() === input ) {
+          flag = true;
+        }
+      }
+      if (!flag){
 
-  }
- 
+
+      if (input !== null) {
+        for (let index = 0; index < q.length; index++) {
+          let cmp = q[index].name;
+          cmp = cmp.toLowerCase();
+          if (input === cmp) {
+            console.log("first");
+            let x = JSON.parse(localStorage.getItem("recents") || "{}");
+            x.push({ name: q[index].name, path: q[index].path });
+            localStorage.setItem("recents", JSON.stringify(x));
+
+            setrecentArr(x);
+          }
+        }
+      }
+    }
+     
+    }
+  };
+
   return (
-  
     <div className="header">
       <h1 className="logo">
         <img src={logo} width="60px" height="30px"></img>HPE Cray EX Console
@@ -107,91 +149,111 @@ const Header1 = () => {
             onClick={showModal}
             onKeyUp={filterSearch}
           />
-         
-         
         </div>
 
         <div className="icon1">
-
           <IconContext.Provider value={{ className: "top-react-icons" }}>
             <BiIcons.BiSearchAlt />
           </IconContext.Provider>
         </div>
-        
 
-  
-  
-   
+        <div id="myModal" className="modal">
+          {/* <!-- Modal content --> */}
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <div className="searchbar">
+              <div className="sideContent">
+                <div className="side ">Recents</div>
+                <ul style={{ listStyle: "none" }}>
+                  {recentArr.map((e: any) => {
+                    return (
+                      <li className="search_list" key={e}>
+                        <Link to={e.path}>{e.name}</Link>
+                      </li>
+                    );
+                  })}
 
-          <div id="myModal" className="modal">
-            {/* <!-- Modal content --> */}
-            <div className="modal-content">
-              <span className="close" onClick={closeModal}>&times;</span>
-              <div className="searchbar">
-                <div className="sideContent">
-                <div className="side search_list">Recents</div>
-                  <ul style={{"listStyle":"none"}}>
-                    {recentArr.map((e:any)=>{
-                      
-                      return <li className="search_list" key={e}><Link to={"/overview"}>{e}</Link></li>
-                    })}
-                  
                   {/* <li className="search_list"><Link to={"/overview"}>Upgrade CSM-Stage-0</Link></li>
                   <li className="search_list"><Link to={"/overview"}>Upgrade CSM-Stage-0</Link></li> 
                   <li className="search_list"><Link to={"/overview"}>Upgrade CSM-Stage-0</Link></li> 
                   <li className="search_list"><Link to={"/overview"}>Upgrade CSM-Stage-0</Link></li> */}
-                  </ul>
-                </div>
+                </ul>
               </div>
-                <hr></hr>
-                <div className="searchbar">
-                
-                <div className="sideContent">
-                <div className="side search_list">Install and Configure</div>
-                  <ul style={{"listStyle":"none"}}>
-                  {p.map((e:any)=>{
-                     return <li className="search_list" key={e}><Link to={e.path}>{e.title}</Link></li>
+            </div>
+            <hr></hr>
+            <div className="searchbar">
+              <div className="sideContent">
+                <div className="side ">Install and Configure</div>
+                <ul style={{ listStyle: "none" }}>
+                  {p.map((e: any) => {
+                    return (
+                      <li
+                        className="search_list"
+                        key={e}
+                        onClick={() => {
+                          addToRecent(e.title, e.path);
+                        }}
+                      >
+                        <Link to={e.path}>{e.title}</Link>
+                      </li>
+                    );
                   })}
                   {/* <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
                   <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
                   <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li> 
                   <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li> */}
-                  </ul>
-                </div>
+                </ul>
               </div>
-                <hr></hr>
-                <div className="searchbar">
-                <div className="sideContent">
-                <div className="side search_list">Upgrade</div>
-                  <ul style={{"listStyle":"none"}}>
-                  <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li></ul>
-                </div>
-              </div>
-                <hr></hr>
-                <div className="searchbar">
-                <div className="sideContent">
-                <div className="side search_list"><span style={{"lineHeight":"2px"}}>NCN</span></div>
-                  <ul style={{"listStyle":"none"}}>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li></ul>
-                </div>
-              </div>
-                <hr></hr>
-
-              
-
-
             </div>
+            <hr></hr>
+            <div className="searchbar">
+              <div className="sideContent">
+                <div className="side ">Upgrade</div>
+                <ul style={{ listStyle: "none" }}>
+                  <li className="search_list">
+                    <Link to={"/overview"}>NCN CSM-Stage-0</Link>
+                  </li>
+                  <li className="search_list">
+                    <Link to={"/overview"}>NCN CSM-Stage-0</Link>
+                  </li>
+                  <li className="search_list">
+                    <Link to={"/overview"}>NCN CSM-Stage-0</Link>
+                  </li>
+                  <li className="search_list">
+                    <Link to={"/overview"}>NCN CSM-Stage-0</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr></hr>
+            <div className="searchbar">
+              <div className="sideContent">
+                <div className="side ">
+                  <span style={{ lineHeight: "2px" }}>NCN</span>
+                </div>
+                <ul style={{ listStyle: "none" }}>
+                  <li className="search_list">
+                    <Link to={"/overview"}>checking CSM-Stage-0</Link>
+                  </li>
+                  <li className="search_list">
+                    <Link to={"/overview"}>checking CSM-Stage-0</Link>
+                  </li>
+                  <li className="search_list">
+                    <Link to={"/overview"}>checking CSM-Stage-0</Link>
+                  </li>
+                  <li className="search_list">
+                    <Link to={"/overview"}>checking CSM-Stage-0</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr></hr>
           </div>
-          </div>
-
-</div>
-   
+        </div>
+      </div>
+    </div>
 
     /*
         <div className="headerheader">

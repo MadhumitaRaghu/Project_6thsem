@@ -9,7 +9,12 @@ import {BiGitBranch} from 'react-icons/bi'
 import {BiTerminal} from 'react-icons/bi'
 import "../styles/sidebar.css"
 import SidebarItem from './SidebarItem'
-const Sidebar = () => {
+interface Props {
+  ter: boolean;
+ 
+}
+
+const Sidebar = ({ter}:any) => {
     const [sidebar, setSidebar] = useState(true);
     // const [dropdown, setDropdown] = useState(false);
    
@@ -27,7 +32,7 @@ const Sidebar = () => {
           <div style={{marginLeft:sidebar?"5rem":"1rem"}} className="bars"> 
           
           <div style={{"marginRight":"5px","cursor":"pointer"}}>{sidebar?<BiGitBranch/>:""}</div>
-            <div style={{"marginRight":"5px","cursor":"pointer"}}>{sidebar?<BiTerminal/>:""}</div>
+            <div style={{"marginRight":"5px","cursor":"pointer"}}>{sidebar?<BiTerminal onClick={ter}/>:""}</div>
            <div >{ sidebar?< AiFillCloseCircle onClick={showSidebar}/>:<FaIcons.FaBars  onClick={showSidebar}/>}</div>
           </div>
           

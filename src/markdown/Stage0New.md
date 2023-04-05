@@ -1,6 +1,6 @@
 # Stage 0 - Prerequisites and Preflight Checks
 
-> **Reminders:**
+<!-- > **Reminders:**
 >
 >  CSM 1.3.0 or higher is required in order to upgrade to CSM 1.4.0.    
 >  If any problems are encountered and the procedure or command output does not provide relevant guidance, see:   
@@ -20,7 +20,7 @@ Stage 0 has several critical procedures which prepare the environment and verify
     - [Stage 0.4 - Backup workload manager data](#stage-04---backup-workload-manager-data)      
     - [Stop typescript](#stop-typescript)       
     - [Stage completed](#stage-completed)   
-        
+         -->
 
 ## Start typescript
 

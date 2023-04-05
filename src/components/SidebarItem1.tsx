@@ -10,9 +10,6 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
 import "../styles/sidebar.css";
 import { Link } from "react-router-dom";
-import { SidebarData } from './SidebarData'
-import SidebarItem1 from "./SidebarItem1";
-
 /*interface subType {
   title: string;
   path: string;
@@ -269,19 +266,19 @@ interface Props {
   sidebar: boolean;
   item: itemType ;
 }
-const SidebarItem = ({ item, sidebar }: any) => {
+const SidebarItem = ({ item1, sidebar }: any) => {
   const [dropdown, setDropdown] = useState(false);
 
-  if (item.subNav ) {
+  if (item1.subNav1 ) {
     return (
       <div>
         <div className="link">
-          <div className="icon">{item.icon}</div>
-        <Link style={{"textDecoration":"none"}} to={item.path}>
-          <div className="link_text">{sidebar ? item.title : ""}</div>
+          <div className="icon">{item1.icon}</div>
+        <Link style={{"textDecoration":"none"}} to={item1.path}>
+          <div className="link_text">{sidebar ? item1.title : ""}</div>
 
           </Link>
-          {sidebar && item.subNav && !dropdown ? (
+          {sidebar && item1.subNav1 && !dropdown ? (
             <AiFillCaretDown
             onClick={() => {
               setDropdown(!dropdown);
@@ -291,7 +288,7 @@ const SidebarItem = ({ item, sidebar }: any) => {
             ) : (
               ""
               )}
-          {sidebar && item.subNav && dropdown ? (
+          {sidebar && item1.subNav1 && dropdown ? (
             <AiFillCaretUp
             onClick={() => {
               setDropdown(!dropdown);
@@ -302,8 +299,8 @@ const SidebarItem = ({ item, sidebar }: any) => {
               ""
               )}
         </div>
-        {/* {item.subNav
-          ? item.subNav.map((i: any, index: any) => {
+        {item1.subNav1
+          ? item1.subNav1.map((i: any, index: any) => {
               return (
                 sidebar &&
                 dropdown && (
@@ -320,9 +317,7 @@ const SidebarItem = ({ item, sidebar }: any) => {
                 )
               );
             })
-          : ""} */}
-           { sidebar &&
-                dropdown && item.subNav.map((item1: any,index1: any)=>{return <SidebarItem1 key={index1} item1={item1} sidebar={sidebar}></SidebarItem1>})}
+          : ""}
       </div>
     );
   }
@@ -332,12 +327,12 @@ const SidebarItem = ({ item, sidebar }: any) => {
     return (
       <div>
 
-<Link style={{"textDecoration":"none"}} to={item.path}>
+<Link style={{"textDecoration":"none"}} to={item1.path}>
       <div className="link">
-        <div className="icon">{item.icon}</div>
-        <div className="link_text">{sidebar ? item.title : ""}</div>
+        <div className="icon">{item1.icon}</div>
+        <div className="link_text">{sidebar ? item1.title : ""}</div>
 
-        {sidebar && item.subNav && !dropdown ? (
+        {sidebar && item1.subNav1 && !dropdown ? (
           <AiFillCaretDown
             onClick={() => {
               setDropdown(!dropdown);
@@ -347,7 +342,7 @@ const SidebarItem = ({ item, sidebar }: any) => {
         ) : (
           ""
         )}
-        {sidebar && item.subNav && dropdown ? (
+        {sidebar && item1.subNav1 && dropdown ? (
           <AiFillCaretUp
             onClick={() => {
               setDropdown(!dropdown);

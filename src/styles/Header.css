@@ -96,7 +96,7 @@ ul li {
     padding-left: 2rem;
     padding-right: 2rem;
     /* border: 1px solid #888; */
-    max-width: 20vw; 
+    max-width: 25vw; 
     
   }
 
@@ -116,17 +116,28 @@ ul li {
   }
   .searchbar{
     display: flex;
-    
   }
   .search_list{
    
      line-height: 2.1rem;
+     list-style: none;
+     font-size: 15px;
+     transition: all 0.5s;
+     
   }
+  .search_list:hover{
+    background-color: rgba(234, 221, 221, 0.982);
+    cursor: pointer;
+  }
+
   .side{
     margin-right: 2rem  ;
     color: #aaa;
-    width: 4rem;
-    display: block;
+    width: 5rem;
+    /* display: block; */
+    line-height: normal;
+    font-size: 16px;
+    
   }
 
 
@@ -137,3 +148,10 @@ ul li {
 
 
 
+.sideContent{
+    display: flex;
+   /* overflow-y: hidden;
+   max-height: 100px; */
+    
+    
+}

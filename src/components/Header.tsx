@@ -8,6 +8,9 @@ import logo from "../components/logohp.png";
 import * as BiIcons from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { SidebarData } from './SidebarData'
+import { InputAdornment } from '@mui/material';
+import { useFormControl } from '@mui/material/FormControl'
+import { ClassNames } from '@emotion/react';
 const Header1 = () => {
 
   const closeModal=()=>{
@@ -93,6 +96,16 @@ const Header1 = () => {
             variant="outlined"
             fullWidth
             label="Search "
+            placeholder="Search docs,flows,nodes" 
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  < BiIcons.BiSearchAlt/>
+                </InputAdornment>
+                
+              ),
+              
+            }}
             onClick={showModal}
             onKeyUp={filterSearch}
           />
@@ -100,12 +113,12 @@ const Header1 = () => {
          
         </div>
 
-        <div className="icon1">
+        {/* <div className="icon1">
 
           <IconContext.Provider value={{ className: "top-react-icons" }}>
             <BiIcons.BiSearchAlt />
           </IconContext.Provider>
-        </div>
+        </div> */}
         
 
   
@@ -118,7 +131,7 @@ const Header1 = () => {
               <span className="close" onClick={closeModal}>&times;</span>
               <div className="searchbar">
                 <div className="sideContent">
-                <div className="side search_list">Recents</div>
+                <div className="side ">Recents</div>
                   <ul style={{"listStyle":"none"}}>
                     {recentArr.map((e:any)=>{
                       
@@ -136,17 +149,17 @@ const Header1 = () => {
                 <div className="searchbar">
                 
                 <div className="sideContent">
-                <div className="side search_list">Install</div>
+                <div className="side ">Install</div>
                   <ul style={{"listStyle":"none"}}>
                   
-                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li> 
-                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li></ul>
+                  <li className="search_list"><Link to={"/overview"}>Validate CSM Health</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>Install CSM</Link></li>
+                  {/* <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li> 
+                  <li className="search_list"><Link to={"/overview"}>Install CSM-Stage-0</Link></li>*/}</ul> 
                 </div>
               </div>
                 <hr></hr>
-                <div className="searchbar">
+                {/* <div className="searchbar">
                 <div className="sideContent">
                 <div className="side search_list">Upgrade</div>
                   <ul style={{"listStyle":"none"}}>
@@ -155,20 +168,73 @@ const Header1 = () => {
                   <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li>
                   <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li></ul>
                 </div>
+              </div> */}
+              <div className="searchbar">
+                <div className="sideContent">
+                <div className="side ">Upgrade</div>
+                <div className='up'>
+                {SidebarData.map((a:any) => {
+                  return a.subNav && a.subNav.map((b:any)=>{
+                    return b.subNav1 && b.subNav1.map((c:any)=>{
+              return(
+                <>
+              {/* <ul style={{"listStyle":"none"}}> */}
+                {/* <li className="search_list">Upgrage {c.title}</li> */}
+                <li className="search_list"><Link to={c.path}>Upgrade {c.title}</Link></li>
+                {/* <li>Name: {employee.name}</li>
+                <li>Age: {employee.age}</li>
+                <li>City: {employee.city}</li> */}
+                {/* </ul> */}
+            
+          </>
+  )
+                    
+})});
+              
+  
+
+              })}
+              
+              </div>
+                </div>
+                
               </div>
                 <hr></hr>
                 <div className="searchbar">
                 <div className="sideContent">
-                <div className="side search_list"><span style={{"lineHeight":"2px"}}>NCN</span></div>
+                <div className="side ">Ops Docs and Commands</div>
                   <ul style={{"listStyle":"none"}}>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li>
-                  <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li></ul>
+                  <li className="search_list"><Link to={"/overview"}>CSM: Change VCS password</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>SMA: View Grafana</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>WLM:Execute job</Link></li>
+                  {/* <li className="search_list"><Link to={"/overview"}>NCN CSM-Stage-0</Link></li>*/}</ul> 
                 </div>
               </div>
-                <hr></hr>
+              <hr></hr>
+                <div className="searchbar">
+                <div className="sideContent">
+                <div className="side "><span style={{"lineHeight":"2px"}}>NCNs</span></div>
+                  <ul style={{"listStyle":"none"}}>
+                  <li className="search_list"><Link to={"/overview"}>ncm-m001</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>ncm-m002</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>ncm-m003</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>ncm-m004</Link></li></ul>
 
+                  
+                </div>
+                
+              </div>
+                <hr></hr>
+                <div className="searchbar">
+                <div className="sideContent">
+                <div className="side "><span style={{"lineHeight":"2px"}}>UANs</span></div>
+                  <ul style={{"listStyle":"none"}}>
+                  <li className="search_list"><Link to={"/overview"}>uan-01</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>uan-02</Link></li>
+                  <li className="search_list"><Link to={"/overview"}>uan-03</Link></li>
+                  {/* <li className="search_list"><Link to={"/overview"}>checking CSM-Stage-0</Link></li> */}</ul>
+                </div>
+              </div>
               
 
 

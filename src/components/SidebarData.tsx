@@ -44,7 +44,7 @@ export const SidebarData= [
         iconClosed: <AiIcons.AiOutlineCheckCircle style={{color:"green"}}></AiIcons.AiOutlineCheckCircle>,
         iconOpened: <AiIcons.AiOutlineCheckCircle/>,
     
-        /*subNav: [
+        subNav: [
           {
             title: 'SLE',
             path: '/s0',
@@ -70,9 +70,9 @@ export const SidebarData= [
             path: '/csm',
             icon:  <AiIcons.AiOutlineCheckCircle />,
             iconClosed: <AiIcons.AiOutlineCheckCircle />,
-            iconOpened: <AiIcons.AiOutlineCheckCircle />,*/
+            iconOpened: <AiIcons.AiOutlineCheckCircle />,
 
-            subNav:[
+            subNav1:[
               {
                 title: 'Stage-0 Prerequisites',
                 path: '/s0',
@@ -84,26 +84,47 @@ export const SidebarData= [
                 icon:  <AiIcons.AiOutlineCheckCircle className='side_icons'/>
               },
               {
-                title: 'Stage-2 Kubernetes Upgrade',
+                title: 'Stage-2 Kubernetes upgrade',
                 path: '/s2',
                 icon:  <AiIcons.AiOutlineCheckCircle className='side_icons'/>
               },
               {
-                title: 'Stage-3 CSM Service Upgrade',
+                title: 'Stage-3 CSM Service upgrade',
                 path: '/s3',
                 icon:  <AiIcons.AiOutlineCheckCircle className='side_icons'/>
               },
               {
-                title: 'Stage-4 Ceph Upgrade',
+                title: 'Stage-4 Ceph upgrade',
                 path: '/s4',
                 icon:  <AiIcons.AiOutlineCheckCircle className='side_icons'/>
               }
 
             ]
-          
+        
+      },
+      {
+        title: 'SMA',
+        path: '/overview/s3',
+        icon:  <AiIcons.AiOutlineCheckCircle />
+      },
+      {
+        title: 'SAT',
+        path: '/overview/s3',
+        icon:  <AiIcons.AiOutlineCheckCircle />
+      },
+      {
+        title: 'UAN',
+        path: '/overview/s3',
+        icon:  <AiIcons.AiOutlineCheckCircle />
+      },
+      {
+        title: 'Analytics',
+        path: '/overview/s3',
+        icon:  <AiIcons.AiOutlineCheckCircle />
       }
         
-      
+    ]
+  }
       
    
   

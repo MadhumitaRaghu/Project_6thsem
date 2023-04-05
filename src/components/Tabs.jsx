@@ -34,11 +34,11 @@ function tabs(s1){
     a.push(s1)
     localStorage.setItem("tabs",JSON.stringify(a))
   }
-  setTimeout(() => {
+  
     if(a.length!==0){
       setp(a);
   }
-  }, 900);
+
 
 } 
 
@@ -74,21 +74,21 @@ function tabs(s1){
         localStorage.setItem("tabs",JSON.stringify(x))
         let y=JSON.parse(localStorage.getItem("tabs"))
         if(y.length===0){
-          setTimeout(() => {
+          
           
             setp(y)
             navigate("/")
   
-          }, 900);  
+            
         }
         else{
         let w=y[y.length-1]
-        setTimeout(() => {
+        
           
           setp(y)
           navigate(w)
 
-        }, 900);  
+        
       }
       }
   

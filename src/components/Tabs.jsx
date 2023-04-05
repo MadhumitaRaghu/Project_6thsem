@@ -10,17 +10,14 @@ const Tab = () => {
 
   let s1=location.pathname;
   useEffect(() => {
-    if(localStorage.getItem("tabs")===null){
-      
-        localStorage.setItem("tabs","[]");
-    }
    tabs(s1)
     // if(localStorage.getItem("tabs")!==null){
     
     //     let a = JSON.parse(localStorage.getItem('tabs'));
     //     setp(a);
     // }
-  
+
+    
     //   if(s1 !=="/" && !p.includes(s1)){
 
     //     let b=[...p]
@@ -37,11 +34,11 @@ function tabs(s1){
     a.push(s1)
     localStorage.setItem("tabs",JSON.stringify(a))
   }
-  // setTimeout(() => {
+  setTimeout(() => {
     if(a.length!==0){
       setp(a);
   }
-  // }, 900);
+  }, 900);
 
 } 
 
@@ -77,21 +74,21 @@ function tabs(s1){
         localStorage.setItem("tabs",JSON.stringify(x))
         let y=JSON.parse(localStorage.getItem("tabs"))
         if(y.length===0){
-          // setTimeout(() => {
+          setTimeout(() => {
           
             setp(y)
             navigate("/")
   
-          // }, 900);  
+          }, 900);  
         }
         else{
         let w=y[y.length-1]
-        // setTimeout(() => {
+        setTimeout(() => {
           
           setp(y)
           navigate(w)
 
-        // }, 900);  
+        }, 900);  
       }
       }
   

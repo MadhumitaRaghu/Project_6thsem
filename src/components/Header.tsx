@@ -7,7 +7,7 @@ import { IconContext } from "react-icons/lib";
 import logo from "../components/logohp.png";
 import * as BiIcons from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { SidebarData } from './SidebarData'
+import { SidebarData } from "./SidebarData";
 import { InputAdornment } from '@mui/material';
 import { useFormControl } from '@mui/material/FormControl'
 import { ClassNames } from '@emotion/react';

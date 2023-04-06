@@ -16,7 +16,7 @@ import * as Suite from '@rsuite/icons';
 // import Code2 from './Code2';
 import '../styles/sidebar.css'
 // import { SidebarData } from './SidebarData';
-// import Terminal from './Terminal';
+import Terminal from './Terminal';
 
 var cmd1:any;
 var c:any;
@@ -108,7 +108,7 @@ const TextHead2 = ({ children }:any) => {
   count_h2++;
   
 chi=0;
-  console.log({children}+" "+count_h2+" "+comp)
+  // console.log({children}+" "+count_h2+" "+comp)
   return (
     <div className="h2">
       <AiOutlineCheckCircle className='icon_everything' />
@@ -173,7 +173,7 @@ const CodeBlock = ({className,children}:any) => {
   // count_li++;
   chi++;
   ch++;
-  console.log(ch)
+  // console.log(ch)
 
     
   function fcmd()

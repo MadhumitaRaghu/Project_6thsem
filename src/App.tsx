@@ -9,7 +9,7 @@ import Analytics from './pages/Analytics';
 import Users from './pages/Users';
 import Revenue from './pages/Revenue';
 import Post from './components/Post';
-// import Terminal1 from './components/Terminal';
+import Terminal1 from './components/Terminal';
 // import { FaStopwatch20 } from 'react-icons/fa';
 import Stag0 from './pages/Stag0';
 import Stag1 from './pages/Stag1';
@@ -24,20 +24,16 @@ import Terminal2 from './components/Terminal2';
 // Render the component
 
 function App() {
-  const [term, setTerm] = useState(false);
+  // const [term, setTerm] = useState(false);
 
   const [cmd, setCmd] = useState("Hello World");
   
-console.log("App")
-  function changeTerm()
-  {
-      setTerm((prev)=> !prev)
-  }
+console.log(cmd)
+  // function changeTerm()
+  // {
+  //     setTerm((prev)=> !prev)
+  // }
 
-  function setCmd1(a:any)
-  {
-    setCmd(a)
-  }
 
   return (
     
@@ -51,7 +47,7 @@ console.log("App")
     
     <Header1></Header1>
     <div style={{"display":"flex"}}>
-    <Sidebar ter={changeTerm}></Sidebar>
+    <Sidebar ></Sidebar>
     {/* <Post></Post> */}
     <div className='foot_mark'>
     <Tab></Tab>
@@ -62,18 +58,18 @@ console.log("App")
       <Route path='/overview/users' element={<Users></Users>}/>
       <Route path='/overview/revenue' element={<Revenue></Revenue>}/>
       <Route path='/install' element={<Stag0></Stag0>}/>
-      <Route path='/s0' element={<Stag0 cmd={setCmd1}></Stag0>}/>
-      <Route path='/s1' element={<Stag1></Stag1>}/>
-      <Route path='/s2' element={<Stag2></Stag2>}/>
-      <Route path='/s3' element={<Stag3></Stag3>}/>
-      <Route path='/s4' element={<Stag4></Stag4>}/>
+      <Route path='/s0' element={<Stag0 cmd={setCmd}></Stag0>}/>
+      <Route path='/s1' element={<Stag1 cmd={setCmd}></Stag1>}/>
+      <Route path='/s2' element={<Stag2 cmd={setCmd}></Stag2>}/>
+      <Route path='/s3' element={<Stag3 cmd={setCmd}></Stag3>}/>
+      <Route path='/s4' element={<Stag4 cmd={setCmd}></Stag4>}/>
       
     </Routes>
     
     
     {/* <Footer data={"hello"}></Footer> */}
     <div>
-    { term && <Terminal2 markdownText={cmd}></Terminal2>}
+    <Terminal1 c={cmd}></Terminal1>
     </div>
     </div>
     </div>

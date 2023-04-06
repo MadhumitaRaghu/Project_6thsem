@@ -72,7 +72,7 @@ export const SidebarData= [
             iconClosed: <AiIcons.AiOutlineCheckCircle />,
             iconOpened: <AiIcons.AiOutlineCheckCircle />,
 
-            subNav1:[
+            subNav:[
               {
                 title: 'Stage-0 Prerequisites',
                 path: '/s0',
@@ -130,4 +130,3 @@ export const SidebarData= [
   
 
 ]
-      
